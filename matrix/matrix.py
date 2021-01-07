@@ -55,16 +55,24 @@ class Matrix:
 
     # To get the 'column' we need to iterate over the rows 
     # and return the values at specified index
-    # Convulted usage of zip vs simple list copy and iteration
+    # Convulted usage of zip vs simple list copy and iteration vs elegant usage of row
     def column(self, index):
-        # tmplist = []
-        # for row in self.map:
-        #     tmplist.append(row[index])
-        # return tmplist
-
+        # iteration code:
+        '''
+        tmplist = []
+        for row in self.map:
+            tmplist.append(row[index])
+        return tmplist
+        '''
+        # zip code
+        '''
         a = zip(*self.map)
         b = list(a)[index - 1]
         return list(b)
+        '''
+
+        # smart solution as per other contributers
+        return [row[index - 1] for row in self.map]
         
 
 # Testing code.
