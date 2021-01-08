@@ -35,25 +35,18 @@ You can play a double or a triple word.
 def scrabble_scorecard():
     '''
     Build out a dictionary with the scrabble's scoring for each letter
+    * Updated with much cooler dict creation from hnlee's solution
 
     :return: The dictionary containing each letter that can get a score and how many points for them
     :rtype: dict
     '''
-    scores = { }
-    scoreslist = {}
-    scoreslist[1] = 'A, E, I, O, U, L, N, R, S, T'.split(', ')
-    scoreslist[2] = 'D, G'.split(', ')
-    scoreslist[3] = 'B, C, M, P'.split(', ')
-    scoreslist[4] = 'F, H, V, W, Y'.split(', ')
-    scoreslist[5] = 'K'.split(', ')
-    scoreslist[8] = 'J, X'.split(', ')
-    scoreslist[10] = 'Q, Z'.split(', ')
-    # print(scoreslist)
-    for v, l in scoreslist.items():
-        for c in l:
-            scores[c] = v
-    # print(scores)
-    return scores
+    return dict([(x, 1) for x in 'AEIOULNRST'] +
+              [(x, 2) for x in 'DG'] +
+              [(x, 3) for x in 'BCMP'] +
+              [(x, 4) for x in 'FHVWY'] +
+              [(x, 5) for x in 'K'] +
+              [(x, 8) for x in 'JX'] + 
+              [(x, 10) for x in 'QZ'])
 
 def score(word):
     '''
