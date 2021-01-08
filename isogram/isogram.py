@@ -15,16 +15,11 @@ The word isograms, however, is not an isogram, because the s repeats.
 
 # Check if the text passed in is an isogram by first filtering for alpha
 # filter + list will convert the string to a list 
-# next count occurences of each charater
-#   if theres more than 1 then it's not a isogram
-# * string is lowercased while filtering to facilitate comparion (count)
+# finally compare the length of the filtered list to a set created from said list
+# * string is lowercased while filtering to prevent issues of case when comparing
 def is_isogram(string):
     text = list(filter(lambda c: c.isalpha(), string.lower()))
-    for c in text:
-        if text.count(c) > 1:
-            return False
-
-    return True
+    return len(text) == len(set(text))
 
 # Testing code
 # print(is_isogram('lumberjacks'))
