@@ -44,7 +44,7 @@ Clover, grass, clover, clover
 '''
 
 class Garden:
-    
+
     def __init__(self, diagram, students=['Alice', 'Bob', 'Charlie', 'David', 
                                         'Eve', 'Fred', 'Ginny', 'Harriet', 
                                         'Ileana', 'Joseph', 'Kincaid', 'Larry']):
@@ -66,6 +66,7 @@ class Garden:
 
     def plants(self, student):
         studentrowoffset = self.students.index(student) * 2
+        '''
         # I am not too happy with the slicing syntax... will look at better solutions
         studentsplants = self.diagram[0][studentrowoffset:studentrowoffset+2:1] + self.diagram[1][studentrowoffset:studentrowoffset+2:1]
         plants = []
@@ -73,6 +74,9 @@ class Garden:
             plants.append(self.get_plant_names(plantinitial))
 
         return plants
+        '''
+        # Much nicer solution as per vianney-g
+        return [self.get_plant_names(p[i]) for p in self.diagram for i in (studentrowoffset, studentrowoffset + 1)]
 
     def get_plant_names(self, plant_name):
         return self.plant_names[plant_name]
