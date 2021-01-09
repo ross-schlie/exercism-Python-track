@@ -28,25 +28,28 @@ class School:
     MAX_GRADE = 8
 
     def __init__(self):
-        self.students = {}
+        self.__db = {}
         for i in range(1, self.MAX_GRADE):
-            self.students[i] = []
+            self.__db[i] = []
 
         return
 
     def add_student(self, name, grade):
-        self.students[grade].append(name)
+        self.__db[grade].append(name)
         return
 
     def roster(self):
         allstudents = []
         for i in range(1, self.MAX_GRADE):
-            allstudents.extend(sorted(self.students[i]))
+            allstudents.extend(sorted(self.__db[i]))
 
         return allstudents
 
     def grade(self, grade_number):
-        return sorted(self.students[grade_number])
+        return sorted(self.__db[grade_number])
+
+    def db(self):
+        return self._db.copy()
 
 # Test code
 # school = School()
@@ -54,6 +57,6 @@ class School:
 # print(school.roster())
 
 # for i in range(1, school.MAX_GRADE):
-#             school.students[i] = []
-# print(school.students)
+#     school.db[1] = ["hacked"]
+# print(school.db)
 # print(school.roster())
