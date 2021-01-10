@@ -13,6 +13,11 @@ but it isn't strictly necessary. The most important thing is to make the code be
 
 import re
 
+# Compiled regular experssions as shown by yawpitch's solution
+BOLD_RE = re.compile(r"(.*)__(.*)__(.*)")
+ITALICS_RE = re.compile(r"(.*)_(.*)_(.*)")
+LIST_RE = re.compile(r"\* (.*)")
+
 def parse(markdown):
     lines = markdown.split('\n')
     res = ''
@@ -20,7 +25,7 @@ def parse(markdown):
     in_list_append = False
     for i in lines:
         i = markup_heading(i)
-        m = re.match(r'\* (.*)', i)
+        m = LIST_RE.match(i)
         if m:
             curr = m.group(1)
             curr = markup_strong(curr)
@@ -91,9 +96,11 @@ def markup_strong(text):
     Returns: 
     text: Marked up code with <strong>
     '''
-    m = re.match('(.*)__(.*)__(.*)', text)
-    if m:
-        text = m.group(1) + '<strong>' + m.group(2) + '</strong>' + m.group(3)
+    # regex compile for performance?
+    text = BOLD_RE.sub(r"\1<strong>\2</strong>\3", text)
+    # m = re.match('(.*)__(.*)__(.*)', text)
+    # if m:
+    #     text = m.group(1) + '<strong>' + m.group(2) + '</strong>' + m.group(3)
     return text
 
 def markup_em(text):
@@ -106,9 +113,11 @@ def markup_em(text):
     Returns: 
     text: Marked up code with <em>
     '''
-    m = re.match('(.*)_(.*)_(.*)', text)
-    if m:
-        text = m.group(1) + '<em>' + m.group(2) + '</em>' + m.group(3)
+    # regex compile for performance?
+    text = ITALICS_RE.sub(r"\1<em>\2</em>\3", text)
+    # m = re.match('(.*)_(.*)_(.*)', text)
+    # if m:
+    #     text = m.group(1) + '<em>' + m.group(2) + '</em>' + m.group(3)
     return text
 
 # a = parse("This will be a paragraph")
