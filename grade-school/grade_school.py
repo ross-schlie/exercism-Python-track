@@ -32,8 +32,6 @@ class School:
         for i in range(1, self.MAX_GRADE):
             self.__db[i] = []
 
-        return
-
     def add_student(self, name, grade):
         self.__db[grade].append(name)
         return

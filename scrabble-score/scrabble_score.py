@@ -97,7 +97,6 @@ class ScrabbleScore:
         self.triple_letters = triple_letters
         self.is_double_word = double_word
         self.is_triple_word = triple_word
-        return
 
     def modify_score_double_letter(self):
         '''

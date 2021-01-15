@@ -58,7 +58,6 @@ class Team:
         self.draws = 0
         self.losses = 0
         self.points = 0
-        return
 
     def __repr__(self):
         # return self.name.ljust(31) + f'|  {self.matches} |  {self.wins} |  {self.draws} |  {self.losses} |  {self.points}'
@@ -104,7 +103,6 @@ class Tourney:
     def __init__(self, rows):
         self.rows = rows
         self.teams = {}
-        return
 
     def __get_team(self, name):
         if name not in self.teams:

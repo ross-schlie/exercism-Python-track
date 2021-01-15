@@ -45,9 +45,6 @@ class Matrix:
 
             self.map.append(map_row)
 
-        # print(self.map)
-        return
-
     # Since the matrix was built 'left-to-right while moving top-to-bottom' 
     # return the whole 'row' based on the index specified
     def row(self, index):
