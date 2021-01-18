@@ -1,16 +1,3 @@
-'''
-Introduction
-Refactor a Markdown parser.
-
-The markdown exercise is a refactoring exercise. 
-There is code that parses a given string with Markdown syntax and returns the associated HTML for that string. 
-Even though this code is confusingly written and hard to follow, somehow it works and all the tests are passing! 
-Your challenge is to re-write this code to make it easier to read and maintain while still making sure that all the tests keep passing.
-
-It would be helpful if you made notes of what you did in your refactoring in comments so reviewers can see that, 
-but it isn't strictly necessary. The most important thing is to make the code better!
-'''
-
 import re
 
 # Compiled regular experssions as shown by yawpitch's solution
@@ -19,6 +6,18 @@ ITALICS_RE = re.compile(r"(.*)_(.*)_(.*)")
 LIST_RE = re.compile(r"\* (.*)")
 
 def parse(markdown):
+    """Parse some HTML and add HTML tags where appropriate.
+    
+    Parameters
+    ------ 
+    arg1 : string
+        HTML being considered for markup 
+  
+    Returns
+    ------
+    string
+        Marked up HTML
+    """
     lines = markdown.split('\n')
     res = ''
     in_list = False
@@ -53,15 +52,19 @@ def parse(markdown):
     return res
 
 def markup_heading(text):
-    '''
-    Markup text in a headings <h6|h2|h1> when ###### found  
+    """Markup text in a headings <h6|h2|h1> when ###### found.
   
-    Parameters: 
-    arg1 (text): the line of code being considered for markup 
+    Parameters
+    ------ 
+    arg1 : string
+        Line of code being considered for markup 
   
-    Returns: 
-    text: Marked up code with <h6|h2|h1>
-    '''
+    Returns
+    ------
+    string
+        Marked up code with <h6|h2|h1>
+
+    """
     if re.match('###### (.*)', text) is not None:
         text = '<h6>' + text[7:] + '</h6>'
     elif re.match('## (.*)', text) is not None:
@@ -71,15 +74,20 @@ def markup_heading(text):
     return text
 
 def markup_paragraph(text):
-    '''
+    """
     Markup text in a paragraph <p> when not in h/ul/p/li already  
   
-    Parameters: 
-    arg1 (text): the line of code being considered for markup 
+    Parameters
+    ------ 
+    arg1 : string
+        Line of code being considered for markup 
   
-    Returns: 
-    text: Marked up code with <p>
-    '''
+    Returns
+    ------
+    string
+        Marked up code with <p>
+
+    """
     m = re.match('<h|<ul|<p|<li', text)
     if not m:
         text = '<p>' + text + '</p>'
@@ -87,38 +95,40 @@ def markup_paragraph(text):
     return text
 
 def markup_strong(text):
-    '''
+    """
     Markup text in a <strong> when (dobule) heavily underlined 
   
-    Parameters: 
-    arg1 (text): the line of code being considered for markup 
+    Parameters
+    ------ 
+    arg1 : string
+        Line of code being considered for markup 
   
-    Returns: 
-    text: Marked up code with <strong>
-    '''
-    # regex compile for performance?
-    text = BOLD_RE.sub(r"\1<strong>\2</strong>\3", text)
+    Returns
+    ------
+    string
+        Marked up code with <strong>
+
+    """
     # m = re.match('(.*)__(.*)__(.*)', text)
     # if m:
     #     text = m.group(1) + '<strong>' + m.group(2) + '</strong>' + m.group(3)
-    return text
+    return BOLD_RE.sub(r"\1<strong>\2</strong>\3", text)
 
 def markup_em(text):
-    '''
+    """
      Markup text in a <em> when underlined 
   
-    Parameters: 
-    arg1 (text): the line of code being considered for markup 
+   Parameters
+    ------ 
+    arg1 : string
+        Line of code being considered for markup 
   
-    Returns: 
-    text: Marked up code with <em>
-    '''
-    # regex compile for performance?
-    text = ITALICS_RE.sub(r"\1<em>\2</em>\3", text)
+    Returns
+    ------
+    string
+        Marked up code with <em>
+    """
     # m = re.match('(.*)_(.*)_(.*)', text)
     # if m:
     #     text = m.group(1) + '<em>' + m.group(2) + '</em>' + m.group(3)
-    return text
-
-# a = parse("This will be a paragraph")
-# print(a) # "<p>This will be a paragraph</p>"
+    return ITALICS_RE.sub(r"\1<em>\2</em>\3", text)

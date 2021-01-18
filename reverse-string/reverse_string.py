@@ -1,11 +1,3 @@
-'''
-Introduction
-Reverse a string
-
-For example: input: "cool" output: "looc"
-'''
-
 def reverse(text):
+    """Get the string, reversed."""
     return text[::-1]
-
-# print(reverse("cool"))
