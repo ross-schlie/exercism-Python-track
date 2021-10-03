@@ -1,6 +1,11 @@
 # Scrabble Score
 
-Given a word, compute the scrabble score for that word.
+Welcome to Scrabble Score on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
+Given a word, compute the Scrabble score for that word.
 
 ## Letter Values
 
@@ -39,22 +44,24 @@ And to total:
 - You can play a double or a triple letter.
 - You can play a double or a triple word.
 
-## Running the tests
-
-To run the tests, run `pytest scrabble_score_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest scrabble_score_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
 ## Source
 
-https://exercism.io/tracks/python Scrabble Score
-Inspired by the Extreme Startup game [https://github.com/rchatley/extreme_startup](https://github.com/rchatley/extreme_startup)
+### Contributed to by
+
+- @behrtam
+- @cmccandless
+- @Dog
+- @ikhadykin
+- @kotp
+- @kytrinyx
+- @lowks
+- @N-Parsons
+- @parinporecha
+- @Peque
+- @pheanex
+- @sjakobi
+- @tqa236
+
+### Based on
+
+Inspired by the Extreme Startup game - https://github.com/rchatley/extreme_startup

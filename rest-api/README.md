@@ -1,14 +1,19 @@
 # Rest Api
 
+Welcome to Rest Api on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Implement a RESTful API for tracking IOUs.
 
 Four roommates have a habit of borrowing money from each other frequently, and have trouble remembering who owes whom, and how much.
 
 Your task is to implement a simple [RESTful API](https://en.wikipedia.org/wiki/Representational_state_transfer) that receives [IOU](https://en.wikipedia.org/wiki/IOU)s as POST requests, and can deliver specified summary information via GET requests.
 
-### API Specification
+## API Specification
 
-#### User object
+### User object
 ```json
 {
   "name": "Adam",
@@ -25,7 +30,7 @@ Your task is to implement a simple [RESTful API](https://en.wikipedia.org/wiki/R
 }
 ```
 
-#### Methods
+### Methods
 
 | Description | HTTP Method | URL | Payload Format | Response w/o Payload | Response w/ Payload |
 | --- | --- | --- | --- | --- | --- |
@@ -33,27 +38,25 @@ Your task is to implement a simple [RESTful API](https://en.wikipedia.org/wiki/R
 | Create user | POST | /add | `{"user":<name of new user (unique)>}` | N/A | `<User object for new user>` |
 | Create IOU | POST | /iou | `{"lender":<name of lender>,"borrower":<name of borrower>,"amount":5.25}` | N/A | `{"users":<updated User objects for <lender> and <borrower> (sorted by name)>}` |
 
-### Other Resources:
+## Other Resources:
 - https://restfulapi.net/
 - Example RESTful APIs
   - [GitHub](https://developer.github.com/v3/)
   - [Reddit](https://www.reddit.com/dev/api/)
 
-## Running the tests
-
-To run the tests, run `pytest rest_api_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest rest_api_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
 ## Source
 
-https://exercism.io/tracks/python Rest API
+### Created by
+
+- @cmccandless
+
+### Contributed to by
+
+- @AnAccountForReportingBugs
+- @BethanyG
+- @Dog
+- @omer-g
+- @rpalo
+- @tqa236
+- @vgerak
+- @yawpitch

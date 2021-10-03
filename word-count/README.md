@@ -1,5 +1,10 @@
 # Word Count
 
+Welcome to Word Count on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Given a phrase, count the occurrences of each _word_ in that phrase.
 
 For the purposes of this exercise you can expect that a _word_ will always be one of:
@@ -30,22 +35,31 @@ i: 1
 fled: 1
 ```
 
-## Running the tests
-
-To run the tests, run `pytest word_count_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest word_count_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
 ## Source
 
-https://exercism.io/tracks/python Word Count
+### Contributed to by
+
+- @behrtam
+- @c4llmeco4ch
+- @cmccandless
+- @Dog
+- @gabriel376
+- @Grociu
+- @guygastineau
+- @ikhadykin
+- @jackattack24
+- @kytrinyx
+- @lowks
+- @N-Parsons
+- @pheanex
+- @rivergillis
+- @samdec11
+- @sjakobi
+- @tqa236
+- @wobh
+- @yawpitch
+- @ZacharyRSmith
+
+### Based on
+
 This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour.

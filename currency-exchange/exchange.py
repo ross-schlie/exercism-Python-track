@@ -1,6 +1,6 @@
-"""Currency exchange module."""
+"""exercism currency exchange module."""
 
-def estimate_value(budget, exchange_rate):
+def exchange_money(budget, exchange_rate):
     """
     Estimated value of the foreign currency you can receive
 
@@ -27,7 +27,7 @@ def get_change(budget, exchanging_value):
     return float(budget - exchanging_value)
 
 
-def get_value(denomination, number_of_bills):
+def get_value_of_bills(denomination, number_of_bills):
     """
     The total value of bills you now have.
 
@@ -63,12 +63,12 @@ def exchangeable_value(budget, exchange_rate, spread, denomination):
     """
 
     exchange_fee = exchange_rate * (spread / 100)
-    foreign_currency = estimate_value(budget, exchange_rate + exchange_fee)
+    foreign_currency = exchange_money(budget, exchange_rate + exchange_fee)
     exchanged_bills = get_number_of_bills(foreign_currency, denomination)
-    return int(get_value(denomination, exchanged_bills))
+    return int(get_value_of_bills(denomination, exchanged_bills))
 
 
-def unexchangeable_value(budget, exchange_rate, spread, denomination):
+def non_exchangeable_value(budget, exchange_rate, spread, denomination):
     """
     The unexchangeable value considering the budget, exchange_rate, spread, & denomination.
 
@@ -80,7 +80,7 @@ def unexchangeable_value(budget, exchange_rate, spread, denomination):
     """
 
     exchange_fee = exchange_rate * (spread / 100)
-    foreign_currency = estimate_value(budget, exchange_rate + exchange_fee)
+    foreign_currency = exchange_money(budget, exchange_rate + exchange_fee)
     exchanged_bills = get_number_of_bills(foreign_currency, denomination)
-    result = get_value(denomination, exchanged_bills)
+    result = get_value_of_bills(denomination, exchanged_bills)
     return int(foreign_currency - result)

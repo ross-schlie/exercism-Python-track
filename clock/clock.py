@@ -1,11 +1,7 @@
-class Clock:
+"""exercism clock module."""
 
+class Clock:
     def __init__(self, hour, minute):
-        """Simple 24 hour clock with minutes and hours.
-        
-        I did see an example where the clock only had minutes and it was much
-        less complex (better)
-        """
         self.minute = minute % 60
         self.hour = (hour + (minute // 60)) % 24
 

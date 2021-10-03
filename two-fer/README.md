@@ -1,14 +1,19 @@
 # Two Fer
 
+Welcome to Two Fer on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 `Two-fer` or `2-fer` is short for two for one. One for you and one for me.
 
 Given a name, return a string with the message:
 
 ```text
-One for X, one for me.
+One for name, one for me.
 ```
 
-Where X is the given name.
+Where "name" is the given name.
 
 However, if the name is missing, return the string:
 
@@ -25,23 +30,25 @@ Here are some examples:
 |        |One for you, one for me.
 |Zaphod  |One for Zaphod, one for me.
 
-
-## Running the tests
-
-To run the tests, run `pytest two_fer_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest two_fer_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
 ## Source
 
-https://exercism.io/tracks/python Two fer
-[https://github.com/exercism/problem-specifications/issues/757](https://github.com/exercism/problem-specifications/issues/757)
+### Created by
+
+- @samwincott
+
+### Contributed to by
+
+- @cmccandless
+- @denislooby
+- @Dog
+- @Grociu
+- @ikhadykin
+- @mikeyny
+- @N-Parsons
+- @tqa236
+- @xarxziux
+- @yawpitch
+
+### Based on
+
+https://github.com/exercism/problem-specifications/issues/757

@@ -1,5 +1,10 @@
 # Matrix
 
+Welcome to Matrix on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Given a string representing a matrix of numbers, return the rows and columns of
 that matrix.
 
@@ -46,22 +51,27 @@ In this exercise you're going to create a **class**.  _Don't worry, it's not as 
 -   [**How to Define a Class in Python**](https://realpython.com/python3-object-oriented-programming/#how-to-define-a-class-in-python) from the Real Python website.  
 -   [**Data Structures in Python**](https://docs.python.org/3/tutorial/datastructures.html) from the Python 3 documentation.
 
-## Running the tests
-
-To run the tests, run `pytest matrix_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest matrix_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
 ## Source
 
-https://exercism.io/tracks/python Matrix
-Warmup to the `saddle-points` warmup. [http://jumpstartlab.com](http://jumpstartlab.com)
+### Created by
+
+- @sjakobi
+
+### Contributed to by
+
+- @AnAccountForReportingBugs
+- @behrtam
+- @BethanyG
+- @cmccandless
+- @danishprakash
+- @Dog
+- @kytrinyx
+- @N-Parsons
+- @pheanex
+- @simmol
+- @tqa236
+- @yawpitch
+
+### Based on
+
+Warmup to the `saddle-points` warmup. - http://jumpstartlab.com

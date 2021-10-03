@@ -1,6 +1,6 @@
 import unittest
 
-from scrabble_score import SCORECARD, ScrabbleScore
+from scrabble_score import ScrabbleScore
 
 # Tests adapted from `problem-specifications//canonical-data.json`
 
@@ -52,7 +52,7 @@ class ScrabbleScoreTest(unittest.TestCase):
 
     def test_entire_alphabet_available(self):
         scrable_scorer = ScrabbleScore()
-        score = scrable_scorer.score("abcdefghijklmnopqrstuvwxyz", [], [], 
+        score = scrable_scorer.score("abcdefghijklmnopqrstuvwxyz", [], [],
             False, False)
         self.assertEqual(score, 87)
 
@@ -74,27 +74,27 @@ class ScrabbleScoreTest(unittest.TestCase):
 
     def test_short_word_tripled(self):
         score = ScrabbleScore().score("at", [], [], False, True)
-        self.assertEqual(score, 6) 
+        self.assertEqual(score, 6)
         # 2 * 3
 
     def test_short_valuable_word_doublel_triplew(self):
         score = ScrabbleScore().score("zoo", ['Z'], [], False, True)
-        self.assertEqual(score, 66) 
+        self.assertEqual(score, 66)
         # (z = 10) * 3 + 2(o = 1) * 3 = 66
 
     def test_medium_word_doubled_letters(self):
         score = ScrabbleScore().score("street", ['s', 't'], [], False, False)
-        self.assertEqual(score, 8) 
+        self.assertEqual(score, 8)
         # 6 + 1 (doubled s) + 1 (double t) = 8
 
     def test_medium_valuable_word_tripledy(self):
         score = ScrabbleScore().score("quirky", [], ['Y'], False, False)
-        self.assertEqual(score, 30) 
-        # quirky = 22 + (y = 4, so 8 bonus points) = 30 
+        self.assertEqual(score, 30)
+        # quirky = 22 + (y = 4, so 8 bonus points) = 30
 
     def test_english_like_word(self):
         score = ScrabbleScore().score("pinata", ['a'], ['p'], True, False)
-        self.assertEqual(score, 30) 
+        self.assertEqual(score, 30)
         # pinata = 8 + 1 (double a) + 6 (tripled p) * 2 = 15 * 2 = 30
 
 if __name__ == "__main__":

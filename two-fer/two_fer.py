@@ -1,3 +1,6 @@
+"""exercism two-fer module."""
+
+
 def two_fer(name=' '):
     if name.isspace() is True:
         name = "you"

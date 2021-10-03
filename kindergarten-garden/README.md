@@ -1,5 +1,10 @@
 # Kindergarten Garden
 
+Welcome to Kindergarten Garden on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Given a diagram, determine which plants each child in the kindergarten class is
 responsible for.
 
@@ -59,22 +64,26 @@ While asking for Bob's plants would yield:
 
 - Clover, grass, clover, clover
 
-## Running the tests
-
-To run the tests, run `pytest kindergarten_garden_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest kindergarten_garden_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
 ## Source
 
-https://exercism.io/tracks/python Kindergarten Garden
-Random musings during airplane trip. [http://jumpstartlab.com](http://jumpstartlab.com)
+### Created by
+
+- @sjakobi
+
+### Contributed to by
+
+- @behrtam
+- @cmccandless
+- @Dog
+- @ikhadykin
+- @Mofeywalker
+- @N-Parsons
+- @pheanex
+- @smalley
+- @thomasjpfan
+- @tqa236
+- @yawpitch
+
+### Based on
+
+Random musings during airplane trip. - http://jumpstartlab.com

@@ -1,5 +1,10 @@
 # Leap
 
+Welcome to Leap on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Given a year, report if it is a leap year.
 
 The tricky thing here is that a leap year in the Gregorian calendar occurs:
@@ -23,22 +28,30 @@ phenomenon, go watch [this youtube video][video].
 
 [video]: http://www.youtube.com/watch?v=xX96xng7sAE
 
-## Running the tests
-
-To run the tests, run `pytest leap_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest leap_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
 ## Source
 
-https://exercism.io/tracks/python Leap
-JavaRanch Cattle Drive, exercise 3 [http://www.javaranch.com/leap.jsp](http://www.javaranch.com/leap.jsp)
+### Contributed to by
+
+- @AnAccountForReportingBugs
+- @behrtam
+- @BethanyG
+- @betojulio
+- @cmccandless
+- @cruxicheiros
+- @Dog
+- @fluxusfrequency
+- @iandexter
+- @ikhadykin
+- @kytrinyx
+- @lowks
+- @N-Parsons
+- @olufotebig
+- @pheanex
+- @sambryant4
+- @sjakobi
+- @tqa236
+- @yawpitch
+
+### Based on
+
+JavaRanch Cattle Drive, exercise 3 - http://www.javaranch.com/leap.jsp

@@ -1,6 +1,8 @@
 import unittest
 
-from acronym import abbreviate
+from acronym import (
+    abbreviate,
+)
 
 # Tests adapted from `problem-specifications//canonical-data.json`
 
@@ -16,12 +18,10 @@ class AcronymTest(unittest.TestCase):
         self.assertEqual(abbreviate("First In, First Out"), "FIFO")
 
     def test_all_caps_word(self):
-        self.assertEqual(
-            abbreviate("GNU Image Manipulation Program"), "GIMP")
+        self.assertEqual(abbreviate("GNU Image Manipulation Program"), "GIMP")
 
     def test_punctuation_without_whitespace(self):
-        self.assertEqual(
-            abbreviate("Complementary metal-oxide semiconductor"), "CMOS")
+        self.assertEqual(abbreviate("Complementary metal-oxide semiconductor"), "CMOS")
 
     def test_very_long_abbreviation(self):
         self.assertEqual(
@@ -32,8 +32,7 @@ class AcronymTest(unittest.TestCase):
         )
 
     def test_consecutive_delimiters(self):
-        self.assertEqual(
-            abbreviate("Something - I made up from thin air"), "SIMUFTA")
+        self.assertEqual(abbreviate("Something - I made up from thin air"), "SIMUFTA")
 
     def test_apostrophes(self):
         self.assertEqual(abbreviate("Halley's Comet"), "HC")

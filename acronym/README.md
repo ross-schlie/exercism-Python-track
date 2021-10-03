@@ -1,5 +1,10 @@
 # Acronym
 
+Welcome to Acronym on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Convert a phrase to its acronym.
 
 Techies love their TLA (Three Letter Acronyms)!
@@ -7,23 +12,27 @@ Techies love their TLA (Three Letter Acronyms)!
 Help generate some jargon by writing a program that converts a long name
 like Portable Network Graphics to its acronym (PNG).
 
-
-## Running the tests
-
-To run the tests, run `pytest acronym_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest acronym_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
 ## Source
 
-https://exercism.io/tracks/python Acronym
-Julien Vanier [https://github.com/monkbroc](https://github.com/monkbroc)
+### Created by
+
+- @rootulp
+
+### Contributed to by
+
+- @AnAccountForReportingBugs
+- @behrtam
+- @cmccandless
+- @Dog
+- @GascaK
+- @ikhadykin
+- @N-Parsons
+- @omer-g
+- @pheanex
+- @sjwarner-bp
+- @thomasjpfan
+- @tqa236
+
+### Based on
+
+Julien Vanier - https://github.com/monkbroc

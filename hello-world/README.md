@@ -1,5 +1,10 @@
 # Hello World
 
+Welcome to Hello World on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 The classical introductory exercise. Just say "Hello, World!".
 
 ["Hello, World!"](http://en.wikipedia.org/wiki/%22Hello,_world!%22_program) is
@@ -14,23 +19,27 @@ The objectives are simple:
 
 If everything goes well, you will be ready to fetch your first real exercise.
 
-
-## Running the tests
-
-To run the tests, run `pytest hello_world_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest hello_world_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
 ## Source
 
-https://exercism.io/tracks/python Hello World
-This is an exercise to introduce users to using Exercism [http://en.wikipedia.org/wiki/%22Hello,_world!%22_program](http://en.wikipedia.org/wiki/%22Hello,_world!%22_program)
+### Created by
+
+- @michaelem
+
+### Contributed to by
+
+- @behrtam
+- @cmccandless
+- @Dog
+- @hebertjulio
+- @ikhadykin
+- @kytrinyx
+- @N-Parsons
+- @NobbZ
+- @pheanex
+- @skeskali
+- @Sukhj1nder
+- @tqa236
+
+### Based on
+
+This is an exercise to introduce users to using Exercism - http://en.wikipedia.org/wiki/%22Hello,_world!%22_program
