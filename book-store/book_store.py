@@ -1,168 +1,125 @@
-'''
-Introduction
-To try and encourage more sales of different books from a popular 5 book series, 
-a bookshop has decided to offer discounts on multiple book purchases.
+"""exercism book store module."""
 
-One copy of any of the five books costs $8.
 
-If, however, you buy two different books, you get a 5% discount on those two books.
-
-If you buy 3 different books, you get a 10% discount.
-
-If you buy 4 different books, you get a 20% discount.
-
-If you buy all 5, you get a 25% discount.
-
-Note: that if you buy four books, of which 3 are different titles, 
-you get a 10% discount on the 3 that form part of a set, but the fourth book still costs $8.
-
-Your mission is to write a piece of code to calculate the price of any conceivable shopping basket 
-(containing only books of the same series), giving as big a discount as possible.
-
-For example, how much does this basket of books cost?
-
-2 copies of the first book
-2 copies of the second book
-2 copies of the third book
-1 copy of the fourth book
-1 copy of the fifth book
-One way of grouping these 8 books is:
-
-1 group of 5 --> 25% discount (1st,2nd,3rd,4th,5th)
-+1 group of 3 --> 10% discount (1st,2nd,3rd)
-This would give a total of:
-
-5 books at a 25% discount
-+3 books at a 10% discount
-Resulting in:
-
-5 x (8 - 2.00) == 5 x 6.00 == $30.00
-+3 x (8 - 0.80) == 3 x 7.20 == $21.60
-For a total of $51.60
-
-However, a different way to group these 8 books is:
-
-1 group of 4 books --> 20% discount (1st,2nd,3rd,4th)
-+1 group of 4 books --> 20% discount (1st,2nd,3rd,5th)
-This would give a total of:
-
-4 books at a 20% discount
-+4 books at a 20% discount
-Resulting in:
-
-4 x (8 - 1.60) == 4 x 6.40 == $25.60
-+4 x (8 - 1.60) == 4 x 6.40 == $25.60
-For a total of $51.20
-
-And $51.20 is the price with the biggest discount.
-'''
-
-from collections import Counter
-from itertools import filterfalse
 
 BASEPRICE = 800
 DISCOUNTS = { 2: 0.05, 3: 0.10, 4: 0.20, 5: 0.25 }
+"""The bookstores discounts for books.
+
+2 unique books get 5% discount.
+3 unique books get a 10% discount.
+4 unique books get a 20% discount.
+5 unique books get a 25% discount.
+"""
 
 def total(basket):
-    '''
-    Calculate and return the cost of the 'books' in the basket, while applying the highest discount possible
-    BASEPRICE for book base price
-    DISCOUNTS for each unique combination of books
+    """Calculate the cost of the 'books' in the basket after discount.
 
-    Parameters: 
-    arg1 (basket) list: A list of 'books' that are being 'sold'. Highly likely to contain duplicates
-  
-    Returns: 
-    int: The price of the books being sold after discounting
+    :param basket list - Books that are being sold. May contain multiple copies of a book
+    :return int - The price of the books after highest possible discount
 
-    :Example: empty basket will return 0
-    :Example: single book in basket will return 800
-    :Example: 5 unique books will return  3000 | ((800 * 5) = 4000) - ((4000 * 25%) = 1000) = 3000
-    :Example: 2 unique books and 1 duplicate will return 2320 | (800 * 3) = ((3 * 800) = 2400) - (((2 * 800) = 1600) * 5% = 80)
-    '''
-    if len(basket) == 0:
+    >>> total([])
+    0
+
+    >>> total(['A'])
+    800
+    # BASEPRICE = 800
+
+    >>> total(['A', 'B', 'C', 'D', 'E'])
+    3000
+    # BASEPRICE = 800
+    # * 5 = 4000
+    # - 25% = 3000
+
+    >>> total(['A', 'B', 'A'])
+    2320
+    # BASEPRICE = 800
+    # * 3 = 2400
+    # - 5% of 1600 = 2320
+
+    """
+    if not basket:
         return 0
 
     subtotal = BASEPRICE * len(basket)
-    best_discount_combination = highest_discount(basket)
-    discounts_available = DISCOUNTS.keys()
-    for bookset in best_discount_combination:
-        numbooks = len(bookset)
-        if numbooks in discounts_available:
-            subtotal -= int(DISCOUNTS[numbooks] * (BASEPRICE * numbooks))
+    if len(basket) < 2:
+        return subtotal
 
-    return subtotal
+    basket.sort()
+    possible_baskets = unique_book_combinations(basket)
 
-def highest_discount(basket):
-    '''
-    Based on the combination of discounts, try to find which combination will get the highest discount
-    * This currently fails for test case where 2 groups of 4 and 1 group of 5 would 
-        get a bigger discount than 2 groups of 5 and 1 group of 3
+    discounts = []
+    for basket in possible_baskets:
+        discount_applied = 0
+        for group in basket:
+            number_of_books = len(group)
+            if number_of_books >= 2:
+                discount_applied += BASEPRICE * number_of_books * DISCOUNTS.get(number_of_books)
 
-    Parameters: 
-    arg1 (basket) list: A list of 'books' that are being 'sold'. Highly likely to contain duplicates
+        discounts.append(discount_applied)
 
-    Returns: 
-    list: A list containg lists (groups) of books. This is supposed to be the grouping with the largest discount
-    '''
-    highestdis = 0
-    bookgroups = []
-    for maxbooks in DISCOUNTS.keys():
-         discount, booksets= total_discount(basket.copy(), maxbooks)
-         if discount > highestdis:
-             highestdis = discount
-             bookgroups = booksets
-         
-    return bookgroups
+    total = subtotal
+    if len(discounts) > 0:
+        discounts.sort()
+        total -= discounts[-1]
 
-def total_discount(basket, maxbooks):
-    '''
-    Calculate the total discount for the users basket of books based on a maximum number of books in a group
+    return total
 
-    Parameters: 
-    arg1 (basket) list: A list of 'books' that are being 'sold'. Highly likely to contain duplicates
-    agr2 (maxbooks) int: The maximum number of unique books in a 'group' for discounting purposes
+def unique_book_combinations(books:list):
+    """
+    Find combinations of unique books in groups of 1-5
 
-    Returns: 
-    int: the amount to be discounted for this grouping of the basket
-    list: A list containg lists (groups) of books. This is supposed to be the grouping with the largest discount
-    '''
-    basketgrp = []
-    basket = sorted(basket, key = basket.count, reverse=True)
-    while len(basket) > 0:
-        uniquebooklist = list(unique_everseen(basket, length=maxbooks-1))
-        basketgrp.append(uniquebooklist)
-        for book in uniquebooklist:
-            basket.remove(book)
+    :param books list - The books in the cart to sort into different groups.
+    :return list - list of combinations of up to 5 books.
+    """
+    combinations = []
 
-    discounttotal = 0
-    discounts_available = DISCOUNTS.keys()
-    for grp in basketgrp:
-        booksingrp = len(grp)
-        if booksingrp in discounts_available:
-            discounttotal += DISCOUNTS[booksingrp] * (BASEPRICE * booksingrp)
+    for offset, book in enumerate(books):
+        for num_books_in_other_groups in [5, 4, 3, 2]:
+            for num_books_in_group in [5, 4, 3, 2]:
+                basket = make_unique_group(books, offset, num_books_in_group, num_books_in_other_groups)
+                if basket not in combinations:
+                    combinations.append(basket)
 
-    return int(discounttotal), basketgrp
+    return combinations
 
-# from https://docs.python.org/3/library/itertools.html
-# more-itertools
-# modified to stop at given lenght
-def unique_everseen(iterable, key=None, length=1):
-    "List unique elements, preserving order. Remember all elements ever seen."
-    # unique_everseen('AAAABBBCCDAABBB') --> A B C D
-    # unique_everseen('ABBCcAD', str.lower) --> A B C D
-    seen = set()
-    seen_add = seen.add
-    if key is None:
-        for element in filterfalse(seen.__contains__, iterable):
-            if(len(seen) > length):
-                return
+def make_unique_group(books, offset, first_group_size, other_group_size):
+    """
+    Recursive method to create groups of unique books
 
-            seen_add(element)
-            yield element
+    :param books list - The books to sort and group.
+    :param offset int - Index of book to exclude from first group.
+    :param first_group_size int - Max size of first group of books
+    :param other_group_size int - Max size of other groups of books
+    :return list - The 'shopping cart' of books as it were,
+        seperating the books into groups in order to calculate the discount
+    """
+    if len(books) == len(set(books)) and len(books) <= first_group_size:
+        return [books]
+
+    basket = []
+    group = []
+    the_rest = []
+    for index, book in enumerate(books):
+        if index == offset:
+            the_rest.append(book)
+            continue
+
+        if len(group) == first_group_size:
+            the_rest = the_rest + books[index::]
+            break
+
+        if book in group:
+            the_rest.append(book)
+        else:
+            group.append(book)
+
+    basket.append(group)
+    if len(the_rest) > other_group_size or len(the_rest) != len(set(the_rest)):
+        rest_groups = make_unique_group(the_rest, offset, other_group_size, other_group_size)
+        for remaining_book_group in rest_groups:
+            basket.append(remaining_book_group)
     else:
-        for element in iterable:
-            k = key(element)
-            if k not in seen:
-                seen_add(k)
-                yield element
+        basket.append(the_rest)
+
+    return basket
