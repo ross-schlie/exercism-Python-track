@@ -2,6 +2,29 @@
 
 
 def answer(question:str):
+    """
+    Answer a mathematical word problem.
+
+    :param question str - The question
+    :return int - The answer
+
+    >>> answer("What is 25 divided by 5?")
+    5
+
+    Handle a set of operations, in sequence.
+
+    Since these are verbal word problems, evaluate the expression
+     from left-to-right, ignoring the typical order of operations.
+
+    >>> answer("What is 3 plus 2 multiplied by 3?")
+    15
+
+    raises ValueError when:
+    - Unsupported operations ("What is 52 cubed?")
+    - Non-math questions ("Who is the President of the United States")
+    - Word problems with invalid syntax ("What is 1 plus plus 2?")
+    """
+
     result = None
     operations = ["plus", "minus", "multiplied", "divided", "raised"]
     ignore = ["What", "is", "to", "the", "by"]
