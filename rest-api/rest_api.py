@@ -1,3 +1,6 @@
+"""exercism rest api module."""
+
+
 '''
 Introduction
 Rest Api
@@ -52,16 +55,16 @@ class RestAPI:
                 for user in self.database['users']:
                     if user['name'] not in request['users']:
                         userscopy['users'].remove(user)
-                        
+
                 return json.dumps(userscopy)
-            
+
         else:
-            return error("Invalid URL in GET REQUEST")
+            return self.error("Invalid URL in GET REQUEST")
 
     def post(self, url, payload=None):
         if url == '/add':
             if payload == None:
-                return error("No user provided in /add POST REQUEST")
+                return self.error("No user provided in /add POST REQUEST")
             else:
                 request = self.decode_payload(payload)
                 return json.dumps(self.add_user(request))
@@ -69,15 +72,15 @@ class RestAPI:
             return self.get('/users', payload)
         elif url == '/iou':
             if payload == None:
-                return error("No changes provided in /iou POST REQUEST")
+                return self.error("No changes provided in /iou POST REQUEST")
             else:
                 request = self.decode_payload(payload)
                 self.handle_balance_change(request)
 
             return self.get('/users')
         else:
-            return error("Invalid method in POST REQUEST")
-    
+            return self.error("Invalid method in POST REQUEST")
+
     def decode_payload(self, payload):
         # Error handling?
         request = json.loads(payload)
@@ -93,7 +96,7 @@ class RestAPI:
         # {"name": 'Adam', "owes": {}, "owed_by": {}, "balance": 0.0}
         # iou request
         # "lender": "Adam", "borrower": "Bob", "amount": 3.0
-        
+
         lender = request['lender']
         borrower = request['borrower']
         amount = request['amount']
@@ -114,7 +117,7 @@ class RestAPI:
                         # Case where B already owed A money, but not as much as A now owes B
                         newamount = amount - user['owed_by'][lender]
                         user['owes'][lender] = newamount
-                        user['owes'] = OrderedDict(sorted(user['owes'].items())) 
+                        user['owes'] = OrderedDict(sorted(user['owes'].items()))
                         user['owed_by'].pop(lender)
                 elif borrower in user['owes']:
                     # Case where B already owed A money: reduce debt (when amount is not more than already owed)
@@ -126,13 +129,13 @@ class RestAPI:
                         # Case where B already owed A money, but not as much as A now owes B
                         newamount = amount - user['owes'][borrower]
                         user['owed_by'][borrower] = newamount
-                        user['owed_by'] = OrderedDict(sorted(user['owed_by'].items())) 
+                        user['owed_by'] = OrderedDict(sorted(user['owed_by'].items()))
                         user['owes'].pop(borrower)
                 else:
                     # new debt
                     if user['name'] == borrower:
                         user['owes'][lender] = amount
-                        user['owes'] = OrderedDict(sorted(user['owes'].items())) 
+                        user['owes'] = OrderedDict(sorted(user['owes'].items()))
                     elif user['name'] == lender:
                         user['owed_by'][borrower] = amount
                         user['owed_by'] = OrderedDict(sorted(user['owed_by'].items()))
@@ -145,6 +148,6 @@ class RestAPI:
 
         payload = json.dumps({"users": [lender, borrower]})
         return self.get('/users', payload)
-            
+
     def error(self, message):
         return json.dumps({ "error": message })

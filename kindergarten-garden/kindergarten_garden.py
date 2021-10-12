@@ -1,7 +1,10 @@
+"""exercism kindergarten garden module."""
+
+
 class Garden:
 
-    def __init__(self, diagram, students=['Alice', 'Bob', 'Charlie', 'David', 
-                                        'Eve', 'Fred', 'Ginny', 'Harriet', 
+    def __init__(self, diagram, students=['Alice', 'Bob', 'Charlie', 'David',
+                                        'Eve', 'Fred', 'Ginny', 'Harriet',
                                         'Ileana', 'Joseph', 'Kincaid', 'Larry']):
         """Create a Garden and keep a diagram of students plants."""
         self.diagram = diagram.splitlines()
@@ -15,9 +18,9 @@ class Garden:
         # Also validate that only 'R/C/G/V are used?
 
         self._students = sorted(students)
-        self._plant_names = {'R': 'Radishes', 
-                            'C': 'Clover', 
-                            'G': 'Grass', 
+        self._plant_names = {'R': 'Radishes',
+                            'C': 'Clover',
+                            'G': 'Grass',
                             'V': 'Violets'}
 
     def plants(self, student):
@@ -31,8 +34,8 @@ class Garden:
 
         return plants
         # Much nicer solution as per vianney-g
-        # return [self._plant_names(p[i]) 
-        #   for p in self.diagram 
+        # return [self._plant_names(p[i])
+        #   for p in self.diagram
         #       for i in (studentrowoffset, studentrowoffset + 1)]
 
     def _plant_name(self, plant_name):

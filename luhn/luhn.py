@@ -1,3 +1,6 @@
+"""exercism luhn module."""
+
+
 class Luhn:
 
     def __init__(self, card_num):
@@ -15,7 +18,7 @@ class Luhn:
     def _simple_check(self, num):
         if num.isdecimal() == False:
             return False
-        
+
         if len(num) <= 1:
             return False
 
@@ -25,7 +28,7 @@ class Luhn:
         num = self._number.replace(' ', '')
         if not self._simple_check(num):
             return
-        
+
         totalsum = 0
         numbers = list(num)
         # If the number is odd, this will be 1, otherwise 0.
@@ -35,11 +38,11 @@ class Luhn:
                 even_number_doubled = int(numbers[index]) * 2
                 if even_number_doubled > 9:
                     even_number_doubled -= 9
-                
+
                 totalsum += even_number_doubled
             else:
                 totalsum += int(numbers[index])
-            
+
         # If the sum is evenly divisible by 10, then the number is valid
         if totalsum % 10 == 0:
             self._valid = True

@@ -1,8 +1,11 @@
+"""exercism tournament module."""
+
+
 class Team:
 
     def __init__(self, name):
         """A Team in a football tournament.
-        
+
         Keeps track of a teams matches, wins, draws, losses and points.
 
         Parameters
@@ -18,7 +21,7 @@ class Team:
         self.points = 0
 
     def __repr__(self):
-        # return self.name.ljust(31) + f'|  
+        # return self.name.ljust(31) + f'|
         #   {self.matches} |
         #   {self.wins} |
         #   {self.draws} |
@@ -32,16 +35,16 @@ class Team:
     def __lt__(self, other):
         return self.points < other.points
 
-    def __le__(self, other): 
+    def __le__(self, other):
         return self.points <= other.points
 
-    def __eq__(self, other): 
+    def __eq__(self, other):
         return self.points == other.points
 
-    def __ne__(self, other): 
+    def __ne__(self, other):
         return self.points != other.points
 
-    def __gt__(self, other): 
+    def __gt__(self, other):
         return self.points > other.points
 
     def __ge__(self, other):
@@ -52,7 +55,7 @@ class Team:
         self.matches += 1
         self.wins += 1
         self.points += 3
-    
+
     def loss(self):
         """The team Lost! Updates the teams matches and losses."""
         self.matches += 1
@@ -73,7 +76,7 @@ class Tourney:
     def _get_team(self, name):
         if name not in self.teams:
             self.teams[name] = Team(name)
-            
+
         return self.teams[name]
 
     def get_teams(self):
@@ -82,8 +85,8 @@ class Tourney:
 
     def parse_contest(self, rows):
         """Determine the teams and their results in a Tournament.
-        
-        Parse lines in text (rows) to find the teams and their results 
+
+        Parse lines in text (rows) to find the teams and their results
         in a Tournament.
         """
         for line in rows:
@@ -112,7 +115,7 @@ def tally(rows):
         Example: "Allegoric Alaskans;Blithering Badgers;win"
 
     Returns
-    ------ 
+    ------
     string
         The results of the Tournament.
         # containing the lines in the file
@@ -121,19 +124,19 @@ def tally(rows):
     """
     tournament = Tourney()
     tournament.parse_contest(rows)
-    sortedTeams = sorted(tournament.get_teams().values(), 
-                        key=lambda team: (-team.points, team.name)) 
-    
+    sortedTeams = sorted(tournament.get_teams().values(),
+                        key=lambda team: (-team.points, team.name))
+
     f = open('tournament_results.txt', 'w')
     f.write('Team'.ljust(31) + '| MP |  W |  D |  L |  P\n')
     for team in sortedTeams:
-        f.write(team.name.ljust(31) 
+        f.write(team.name.ljust(31)
             + f'|  {team.matches} '
             + f'|  {team.wins} '
             + f'|  {team.draws} '
             + f'|  {team.losses} '
             + f'|  {team.points} \n')
-    
+
     f.close()
 
     # ...
@@ -141,6 +144,6 @@ def tally(rows):
     buffer = []
     for line in f:
         buffer.append(line.rstrip())
-    
+
     f.close()
     return buffer

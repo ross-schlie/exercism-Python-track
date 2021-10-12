@@ -1,3 +1,6 @@
+"""exercism markdown module."""
+
+
 import re
 
 # Compiled regular experssions as shown by yawpitch's solution
@@ -7,12 +10,12 @@ LIST_RE = re.compile(r"\* (.*)")
 
 def parse(markdown):
     """Parse some HTML and add HTML tags where appropriate.
-    
+
     Parameters
-    ------ 
+    ------
     arg1 : string
-        HTML being considered for markup 
-  
+        HTML being considered for markup
+
     Returns
     ------
     string
@@ -53,12 +56,12 @@ def parse(markdown):
 
 def markup_heading(text):
     """Markup text in a headings <h6|h2|h1> when ###### found.
-  
+
     Parameters
-    ------ 
+    ------
     arg1 : string
-        Line of code being considered for markup 
-  
+        Line of code being considered for markup
+
     Returns
     ------
     string
@@ -75,13 +78,13 @@ def markup_heading(text):
 
 def markup_paragraph(text):
     """
-    Markup text in a paragraph <p> when not in h/ul/p/li already  
-  
+    Markup text in a paragraph <p> when not in h/ul/p/li already
+
     Parameters
-    ------ 
+    ------
     arg1 : string
-        Line of code being considered for markup 
-  
+        Line of code being considered for markup
+
     Returns
     ------
     string
@@ -96,13 +99,13 @@ def markup_paragraph(text):
 
 def markup_strong(text):
     """
-    Markup text in a <strong> when (dobule) heavily underlined 
-  
+    Markup text in a <strong> when (dobule) heavily underlined
+
     Parameters
-    ------ 
+    ------
     arg1 : string
-        Line of code being considered for markup 
-  
+        Line of code being considered for markup
+
     Returns
     ------
     string
@@ -116,13 +119,13 @@ def markup_strong(text):
 
 def markup_em(text):
     """
-     Markup text in a <em> when underlined 
-  
+     Markup text in a <em> when underlined
+
    Parameters
-    ------ 
+    ------
     arg1 : string
-        Line of code being considered for markup 
-  
+        Line of code being considered for markup
+
     Returns
     ------
     string

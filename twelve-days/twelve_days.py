@@ -1,3 +1,5 @@
+"""exercism twelve-days module."""
+
 
 NTH = {
         1: "first",
@@ -16,17 +18,17 @@ NTH = {
 """Ordinals for days of Xmas"""
 
 VERSES = {
-        12: 'twelve Drummers Drumming', 
-        11: 'eleven Pipers Piping', 
-        10: 'ten Lords-a-Leaping', 
-        9: 'nine Ladies Dancing', 
-        8: 'eight Maids-a-Milking', 
-        7: 'seven Swans-a-Swimming', 
-        6: 'six Geese-a-Laying', 
-        5: 'five Gold Rings', 
-        4: 'four Calling Birds', 
-        3: 'three French Hens', 
-        2: 'two Turtle Doves', 
+        12: 'twelve Drummers Drumming',
+        11: 'eleven Pipers Piping',
+        10: 'ten Lords-a-Leaping',
+        9: 'nine Ladies Dancing',
+        8: 'eight Maids-a-Milking',
+        7: 'seven Swans-a-Swimming',
+        6: 'six Geese-a-Laying',
+        5: 'five Gold Rings',
+        4: 'four Calling Birds',
+        3: 'three French Hens',
+        2: 'two Turtle Doves',
         1: 'a Partridge in a Pear Tree'
 }
 """Verses possible to sing"""
@@ -43,14 +45,14 @@ def recite(start_verse, end_verse):
 
     arg2 : int
         The last verse to sing
-    
+
     Returns
-    ------ 
+    ------
     string
         A string containing the verses to be sung.
 
     """
-    
+
     song = 'On the ' \
             + NTH[start_verse] \
             + ' day of Christmas my true love gave to me: '
@@ -58,7 +60,7 @@ def recite(start_verse, end_verse):
         song += VERSES[verse]
         if verse > 1:
             song += ', '
-        
+
         if verse == 2 and start_verse > 1:
             song += 'and '
 

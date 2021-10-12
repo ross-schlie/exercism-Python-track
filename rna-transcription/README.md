@@ -1,4 +1,9 @@
-# RNA Transcription
+# Rna Transcription
+
+Welcome to Rna Transcription on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
 
 Given a DNA strand, return its RNA complement (per RNA transcription).
 
@@ -18,23 +23,32 @@ each nucleotide with its complement:
 * `T` -> `A`
 * `A` -> `U`
 
-
-## Running the tests
-
-To run the tests, run `pytest rna_transcription_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest rna_transcription_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
 ## Source
 
-https://exercism.io/tracks/python RNA Transcription
-Hyperphysics [http://hyperphysics.phy-astr.gsu.edu/hbase/Organic/transcription.html](http://hyperphysics.phy-astr.gsu.edu/hbase/Organic/transcription.html)
+### Created by
+
+- @BrianHicks
+
+### Contributed to by
+
+- @behrtam
+- @cmccandless
+- @davepeake
+- @Dog
+- @dvermd
+- @hariesramdhani
+- @ikhadykin
+- @jamesmcm
+- @kytrinyx
+- @lowks
+- @magnus-hogberg
+- @N-Parsons
+- @pheanex
+- @sjakobi
+- @thomasjpfan
+- @tqa236
+- @yawpitch
+
+### Based on
+
+Hyperphysics - http://hyperphysics.phy-astr.gsu.edu/hbase/Organic/transcription.html

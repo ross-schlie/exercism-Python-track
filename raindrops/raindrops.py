@@ -1,13 +1,16 @@
+"""exercism raindrops module."""
+
+
 def convert(number):
     """Convert a number to a series of rain tones.
-    
+
     Parameters
     ----------
     arg1 : int
         A number to convert to rain tones
 
     Returns
-    ------ 
+    ------
     string
         A string containing rain tones or the number if it's not converted.
 
@@ -28,7 +31,7 @@ def convert(number):
         rain += 'Pling'
 
     if number % 5 == 0:
-        rain += 'Plang' 
+        rain += 'Plang'
 
     if number % 7 == 0:
         rain += 'Plong'

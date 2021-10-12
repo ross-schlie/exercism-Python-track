@@ -1,14 +1,16 @@
+"""exercism rna-transcription module."""
+
 
 def to_rna(dna_strand):
     """Convert a strand of DNA to RNA
-    
+
     Parameters
     ----------
     arg1 : string
         DNA strand (string of nucleotides)
 
     Returns
-    ------ 
+    ------
     string
         RNA strand (string of nucleotides)
 
@@ -18,7 +20,7 @@ def to_rna(dna_strand):
     >>> to_rna("ACGTGGTCTTAA")
     "UGCACCAGAAUU"
     """
-    
+
     nucleotides = ['G', 'C', 'T', 'A']
     nucleotide_complements = ['C', 'G', 'A', 'U']
     replacedstrand = []
