@@ -10,11 +10,11 @@ def is_armstrong_number(number):
     :param number int - Number to check.
     :return bool - Whether the provided number passes the check or not.
 
-    >>>is_armstrong_number(9)
+    >>> is_armstrong_number(9)
     True
     # because `9 = 9^1 = 9`
 
-    >>>is_armstrong_number(10)
+    >>> is_armstrong_number(10)
     False
     # because `10 != 1^2 + 0^2 = 1`
     """
