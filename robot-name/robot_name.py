@@ -1,8 +1,8 @@
 """exercism robot module."""
 
 import random
+import string
 
-ALPHABET = "abcdefghijklmnopqrstuvwxyz".upper()
 robots = {}
 
 class Robot:
@@ -20,7 +20,7 @@ class Robot:
         return name
 
     def __generate_letter(self):
-        return ALPHABET[random.randint(0, 25)]
+        return string.ascii_uppercase[random.randint(0, 25)]
 
     def __generate_number(self):
         return str(random.randint(0, 9))

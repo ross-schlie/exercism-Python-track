@@ -1,7 +1,7 @@
 """exercism affine cipher module."""
 
 from math import gcd as bltin_gcd
-
+import string
 
 def encode(plain_text, a, b):
     """
@@ -13,7 +13,7 @@ def encode(plain_text, a, b):
     :return string - Encoded text.
     """
 
-    alpha = 'abcdefghijklmnopqrstuvwxyz'
+    alpha = string.ascii_lowercase
     m = len(alpha)
 
     if bltin_gcd(a, m) != 1:
@@ -50,7 +50,7 @@ def decode(ciphered_text, a, b):
     :return string - Decoded text.
     """
 
-    alpha = 'abcdefghijklmnopqrstuvwxyz'
+    alpha = string.ascii_lowercase
     m = len(alpha)
 
     if bltin_gcd(a, m) != 1:

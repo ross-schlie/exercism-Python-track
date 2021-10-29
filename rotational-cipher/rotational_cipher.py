@@ -1,5 +1,6 @@
 """exercism rotational cipher module."""
 
+import string
 
 def rotate(text, key):
     """
@@ -9,7 +10,8 @@ def rotate(text, key):
     :param key string - The key to use in the cipher.
     :return text - ciphered text
     """
-    alpha = 'abcdefghijklmnopqrstuvwxyz'
+
+    alpha = string.ascii_lowercase
     out = ''
     for index, char in enumerate(text):
         if char.isalpha():
